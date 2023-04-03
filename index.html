@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+    <meta name="description" content="QR Code Generator" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no"
+    />
+    <meta http-equiv="author" content="P.Gabov" />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="discription" content="QR Code Generator" />
+    <meta
+      name="keywords"
+      content="landing, landing-page, html, html5, css3, javascript, js, ajax, nodejs, react, redux, next"
+    />
+    <meta property="og:locale" content="ru_RU" />
+    <meta name="Address" content="Россия, Москва" />
+    <meta property="og:title" content="QR Code Generator" />
+    <meta property="og:description" content="QR Code Generator" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="http://skill.gabow.ru/images/new_logo.png" />
+    <meta property="og:site_name" content="QR Code Generator" />
+    <meta property="og:url" content="http://skill.gabow.ru/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@paul.gabow" />
+    <meta name="twitter:title" content="QR Code Generator" />
+    <meta name="twitter:description" content="2QR Code Generator" />
+    <meta name="twitter:image" content="http://skill.gabow.ru/images/new_logo.png" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
+
+    <title>QR Code Generator</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kanit:wght@700&family=Work+Sans:wght@200;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link href="https://unpkg.com/sanitize.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <h1 class="heading">QR-код</h1>
+
+    <main>
+      <section id="qr-code-settings" class="container container-front">
+        <header>
+          <h2>Создайте свой QR-код</h2>
+          <h3>Настройте параметры ниже, чтобы ваш код выглядел так, как вы хотите</h3>
+        </header>
+
+        <div>
+          <div class="setting">
+            <!-- <label for="data">Текст / URL</label> -->
+            <span class="sub-label">Введите текст или URL-адрес на который должен вести QR код</span>
+            <input class="setting-text" type="text" name="data" id="data" min="0" max="900" required placeholder="Введите текст"/>
+          </div>
+
+          <div class="colors">
+            <div class="setting">
+              <label for="color">Основной цвет</label>
+              <input id="color" type="color" value="#000000" />
+              <span id="color-value">#000000</span>
+            </div>
+
+            <div class="setting">
+              <label for="bg-color">Фоновый цвет</label>
+              <input id="bg-color" type="color" value="#c7c7c7" />
+              <span id="bg-color-value">#c7c7c7</span>
+            </div>
+          </div>
+
+          <div class="setting">
+            <label for="size">Размер</label>
+            <span id="size-value" class="sub-label">200 x 200</span>
+            <div class="slider">
+              <input
+                name="size"
+                id="size"
+                type="range"
+                value="200"
+                min="100"
+                max="1000"
+                step="100"
+              />
+            </div>
+          </div>
+
+          <div class="setting">
+            <label for="margin">Отступ</label>
+            <span id="margin-value" class="sub-label">1 px</span>
+            <div class="slider">
+              <input type="range" name="margin" id="margin" min="0" max="50" value="1" />
+            </div>
+          </div>
+
+          <div class="setting">
+            <fieldset>
+              <legend>Формат изображения</legend>
+              <div>
+                <input type="radio" id="png" name="format" value="png" id="format" checked />
+                <label for="png">PNG</label>
+              </div>
+              <div>
+                <input type="radio" id="gif" name="format" value="gif" id="format" />
+                <label for="gif">GIF</label>
+              </div>
+              <div>
+                <input type="radio" id="jpeg" name="format" value="jpeg" id="format" />
+                <label for="jpeg">JPEG</label>
+              </div>
+              <div>
+                <input type="radio" id="jpg" name="format" value="jpg" id="format" />
+                <label for="jpg">JPG</label>
+              </div>
+              <div>
+                <input type="radio" id="svg" name="format" value="svg" id="format" />
+                <label for="svg">SVG</label>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+        <div class="cta">
+          <button id="cta" type="submit" disabled>Сгенерировать QR-код</button>
+        </div>
+      </section>
+
+      <section id="qr-code-result" class="container container-back">
+        <header>
+          <h2>Ваш QR-код готов!</h2>
+          <h3>Отсканируйте это изображение, чтобы увидеть его в действии</h3>
+        </header>
+
+        <div class="setting">
+          <img src="" alt="qr-code" id="qr-code-image" name="qr-code" />
+        </div>
+
+        <div class="info">
+          <p>Щелкните изображение правой кнопкой мыши и выберите <b>"Сохранить изображение как"</b>, чтобы загрузить файл</p>
+
+          <p>Для внесения изменений нажмите <b>"Вернуться"</b></p>
+
+          <div class="cta">
+            <button id="edit" type="submit">Вернуться</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
